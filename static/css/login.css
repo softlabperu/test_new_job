@@ -1,0 +1,77 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18-jul-2018, 11:27:49
+    Author     : KEVIN ACOSTA
+*/
+
+body
+{
+    font-family: 'Fira Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.loginBox{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 350px;
+    height: 420px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.5);
+    padding: 80px 40px;
+}
+
+.user-logo{
+    width: 100px;
+    height: 100px;
+    /*border-radius: 50%;*/
+    overflow: hidden;
+    position: absolute;
+    top: calc(-100px/2);
+    left: calc(50% - 50px);
+}
+
+h4{
+    margin: 0;
+    padding: 0 0 20px;
+    color: #fff;
+    text-align: center;
+}
+
+legend{
+    margin-bottom: 40px;
+}
+
+.loginBox input{
+    width: 100%;
+    margin-left: -22px;
+    margin-bottom: 20px;
+    
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    color: #fff;
+}
+
+.loginBox button{
+    margin-left: -22px;
+    border-radius: 20px;
+    border: none;
+}
+
+.loginBox i{
+    color: #fff;
+    margin-right: -10px;
+}

@@ -1,0 +1,114 @@
+{% extends "header.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+    <br>
+    <div class="row" >
+        <div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h5 class="panel-title"><small>REGISTRO DE DATOS</small></h5>
+                </div>
+{{ lista }}
+
+                <div class="panel-body">
+                    <form method="post" class="form-horizontal" id="frm_crear_examen" data-post-url ='{% url crear_examen %}'>
+
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Documento: </label>
+                            <div class=" col-md-6">
+                                <input class="form-control input-sm" id="documento" name="txtdocumento" type="text"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Nombres: </label>
+                            <div class=" col-md-6">
+                                <input class="form-control input-sm" id="Nombres" name="txtNombres" type="text"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Apellidos: </label>
+                            <div class=" col-md-6">
+                                <input class="form-control input-sm" id="Apellidos" name="txtApellidos" type="text"  />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Nivel: </label>
+                            <div class=" col-md-2">
+                                <select name="txtnivel" class="form-control input-sm">
+                                    <option value="P">P</option>
+                                    <option value="P1">P1</option>
+                                    <option value="P2">P2</option>
+                                    <option value="P3">P3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2"> </label>
+                            <div class=" col-md-6">
+                                <button type="button" class="btn btn-success" onclick="CrearExamen()">Crear Examen</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+
+
+    function CrearExamen()
+    {
+        var post_url = $('#frm_crear_examen').data("post-url");
+        var frm = $('#frm_crear_examen');
+
+        $.ajax({
+                type: 'post',
+                url: post_url,
+                data: frm.serialize(),
+                dataType: 'json',
+                success: function (response)
+                {
+                   //console.log(response);
+                    if(response.salida == 1)
+                    {
+                        $.confirm({
+                                    title: 'Registro de Informacion',
+                                    content: 'El Examen fue creado Satisfactoriamente',
+                                    theme: 'Modern',
+                                    animation: 'top',
+                                    icon: 'glyphicon glyphicon-ok',
+                                    type: 'blue',
+                                    buttons:
+                                            {
+                                              ok:
+                                                {
+                                                  btnClass: 'btn-blue',
+                                                  action: function () { }
+                                                }
+                                            }
+                                  });
+                    }
+
+
+                }
+              });
+    }
+
+
+
+</script>
+{% endblock %}

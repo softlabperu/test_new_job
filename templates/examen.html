@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen</title>
+</head>
+<body>
+
+<ul>
+
+    {% for p in preguntas %}
+        <li style="list-style: none;">{{ p.id }} ) {{ p.pregunta }}</li>
+        <ul>
+        {% for a in alternativas %}
+            {% if a.idpregunta == p.id %}
+                <li style="list-style: none;">
+                    <input type="checkbox" name="respuestas[]"  value="{{ a.id }}" class="opcion{{ p.id }}">
+                    {{ a.alternativa }}
+                </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endfor %}
+
+</ul>
+
+</body>
+</html>
+
+<script>
+
+    var datos = {{ alternativas|safe }};
+
+    for (i = 0; i < datos.length; i++)
+    {
+        var option = 'opcion' + datos[i]['idpregunta'];
+        let Checked = null;
+        //The class name can vary
+        for (let CheckBox of document.getElementsByClassName(option))
+        {
+            CheckBox.onclick = function(){
+            if(Checked!=null){
+              Checked.checked = false;
+              Checked = CheckBox;
+            }
+            Checked = CheckBox;
+          }
+        }
+    }
+
+
+</script>

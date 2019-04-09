@@ -1,0 +1,676 @@
+body{
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 10px;
+    margin : 0;
+    /*overflow-x: hidden;*/
+
+}
+
+ul li a 
+{
+    font-size: 12px;    
+}
+/*toda la franja del menu*/
+.menu
+{
+   color: white
+}
+
+/*boton inicio*/
+#inicio a
+{
+    background:#ab5226;
+}
+
+/*los nombres de los modulos*/
+#listamenu, #menu-derecha
+{
+    background: #eb6f31;
+    color:white;
+
+}
+
+/*al pasar el mouse*/
+#listamenu:hover, #menu-derecha:hover
+{
+    background: #ab5226;
+    cursor: pointer;
+}
+
+input:checked + #listamenu
+{
+    background:#ab5226;
+    box-shadow: inset 0 12px 35px rgba(0,0,0,0.5);
+}
+
+#menumodulos input{
+    display: none;
+}
+
+.perfil
+{
+    background:#ab5226;
+    /*color:white;*/
+}
+
+
+/*// estilos para la pantalla inicio de datos personales*/
+
+#perfil-datos .datosPersonales
+{
+   text-align: center 
+}
+
+.datosPersonales
+{
+    padding-left: 4.5em;
+}
+
+.cambioclave
+{
+    text-align: right;
+    size: 5px;
+    color: red;
+    cursor: pointer
+}
+
+ /*estilos de perfil*/
+ /*clase para el boton cambiar de clave*/
+#rounded
+{
+    border-radius: 50px;
+}
+
+
+
+.foto-perfil{
+    height: 150px
+}
+
+.foto-perfil img{
+    height: 90px;
+    width: 90px;
+}
+
+.foto-perfil h5{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    color: #2c2c2c;
+    line-height: 20px
+}
+
+.foto-perfil h6{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    color: #888888;
+    font-weight: 400;
+}
+
+
+.jumbotron1 
+{
+    background: #31506c;
+    color:#fff;
+    width: 91.7em;
+    margin-left: -17px;
+    padding: 1.5px 0 0 0;
+    text-align: center;
+    
+}
+
+.jumbotron1 h3{
+    font-size: 20px;
+    margin: 7px;
+}
+
+footer{
+	background :#3A5FCD;
+	color:#fff;
+	
+}
+.contacto{
+	background :#36648B;
+	color:#fff;
+	
+}
+
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+}
+#login-dp .help-block{
+    font-size:12px    
+}
+#login-dp .bottom{
+    background-color:rgba(255,255,255,.8);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#login-dp .social-buttons{
+    margin:12px 0    
+}
+#login-dp .social-buttons a{
+    width: 49%;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+.btn-fb{
+    color: #fff;
+    background-color:#3b5998;
+}
+.btn-fb:hover{
+    color: #fff;
+    background-color:#496ebc 
+}
+.btn-tw{
+    color: #fff;
+    background-color:#55acee;
+}
+.btn-tw:hover{
+    color: #fff;
+    background-color:#59b5fa;
+}
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+}
+
+#events {
+        margin-bottom: 1em;
+        padding: 1em;
+        background-color: #f6f6f6;
+        border: 1px solid #999;
+        border-radius: 3px;
+        height: 100px;
+        overflow: auto;
+    }
+
+/* *****************ESTILOS PARA LA PARTE SUPERIOR Y MENU LATERAL Y RESPONSIVE************************************** */
+
+.logo-section img{
+    height: 25px;
+    cursor: pointer;
+    color: #fff;
+}
+
+#logo-menu
+{
+    height: 30px;
+    margin-top: -3px;
+    border-radius: 20px;
+}
+
+.logo{
+    font-family: roboto;
+    font-style: normal;
+    line-height: 18px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
+    display: none;
+}
+
+.logo:hover{
+    
+    text-decoration: none;
+    color: #fff;
+}
+
+/*efecto de aparecer y desaparecer el menu con un clic*/
+
+#btn-menu{display: none} /*checkbox para el menu*/
+#btn-menu-horizontal{display: none} /*checkbox para la parte sesion*/
+
+#btn-menu:checked ~ .parte-menu 
+{
+    transform: translateX(-250px);
+    transition: all 0.5s;
+}
+#btn-menu:checked ~ #page-content-wrapper {
+	padding-left: 0px;
+        padding-right: 0px;
+        transition: all 0.5s;
+        margin-left: 0px;
+}
+
+/*fin efecto de aparecer y desaparecer el menu con un clic*/
+
+.parte-menu{
+    /*position: absolute;*/
+    width: 250px;
+    height: 100%;
+    background: #2f3337;/*color negro*/
+    transition: all 0.5s;
+    position: fixed;
+}
+
+.parte-menu ul{
+    
+    list-style: none;
+    line-height: 42px;
+    padding-left: 0;
+    box-sizing: border-box;
+    /*margin-top: 50px;*/
+}
+
+.parte-menu a {
+    color: #ddd;
+    font-size: 11px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+} 
+
+#menumodulos {
+    box-shadow: 3px 0 rgba(255,255,255,.2) inset;
+    margin-bottom: 5px;
+    padding-left: 1.5em;
+}
+
+.parte-menu li:hover {
+    box-shadow: 19em 0 rgba(255,255,255,.2) inset;
+/*    display: block;
+    position: relative;*/
+}
+
+#menumodulos a{color: #ddd}
+
+.Modulos a:link{
+	text-decoration:none;
+}
+
+.Modulos a:hover{
+	color: #fff;
+        margin-left: 1em;
+        transition: all 0.5s;
+}
+
+/*estilos de los submenus cuando se desplegan*/
+.SubMenus li{
+    box-shadow: none;
+    padding-left: 3em;
+}
+
+/*.SubMenus a{margin-left: -15px}*/
+
+
+
+
+#page-content-wrapper
+{
+    /*padding-left: 250px;*/
+    padding-right: 250px;
+    transition: all 0.5s;
+    margin-left: 150px;
+    padding-left:0; 
+    
+}
+
+
+.menu-horizontal{
+    margin-left: 0;
+    /*height: 60px;*/
+}
+
+nav{
+    background: #02a96b;
+    margin:-20px;
+    
+}
+
+.logo-section{
+    float: left;
+    padding: 18px;
+    font-family: serif;
+    height: 5px;
+}
+
+.hb-button{
+    float: right;
+    margin-right: 20px;
+    border: 1px solid #2ac98c;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: none;
+}
+
+.sesion-admin a{
+    color: #fff;    
+}
+
+.sesion-admin{
+    margin-right: 20px;   
+}
+
+.sesion-admin li:hover{
+    background: rgba(0,0,0,0.2);
+}
+
+nav a{
+    text-decoration: none;
+    font-size: 14px;
+    padding: 5px;
+}
+
+
+nav ul{
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    transition: max-height 0.5s;
+}
+
+nav a:link{
+	text-decoration:none;
+}
+
+nav ul li{
+    float: right;
+    display: inline-block;
+    padding: 20px;
+}
+
+.sesion-admin li > a{
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+}
+
+.sesion-admin li > a:hover{
+    color: #fff;
+}
+
+/*para que se vizualice la linea cuando pasa el mouse*/
+.sesion-admin li > a:before{
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.sesion-admin li > a:hover:before{
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+} 
+
+
+@media screen and (max-width: 768px)
+{
+    /*el menu esta oculto desde la izquierda*/ 
+    .parte-menu{
+        z-index: 1;
+        margin-top: 50px;
+        /*background: #203E50;*/
+        transform: translateX(-250px);
+    }
+    
+    #btn-menu:checked ~ .parte-menu 
+    { 
+        transform: translateX(0px);
+        transition: all 0.5s;
+    }
+    
+    .logo-section img
+    {
+      margin-top: -10px;
+    }
+
+    
+    #page-content-wrapper{
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-left: 0px;
+    }
+    
+    .logo{display: inline}
+    
+    .logo-section{
+        float: none;
+    }
+    .menu-horizontal ul
+    {
+        border-top: 0.2px solid #2ac98c;
+        max-height: 0;
+        width: 100%;
+    }
+
+    #btn-menu-horizontal:checked ~ .sesion-admin
+    {   
+        max-height: 10em;
+        transition: all 1s;
+    }
+    
+    .menu-horizontal ul li{
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .hb-button{
+        display: inline;
+    }
+
+}
+
+
+/*******************ESTILOS PARA LA SECCION DE LOS DATOS DEL PERFIL *************************/
+/*
+.profile-img-wrap {height: 120px;position: absolute;width: 120px;background: #fff;overflow:hidden;}
+.profile-basic {margin-left: 140px;}
+.profile-img-wrap img {width: 120px;height: 120px;}
+
+.personal-info li .title {color: #515365;float: left;font-weight: 500;margin-right: 30px;width: 30%;}
+.personal-info li .text {color: #888da8;display: block;overflow: hidden;}
+.personal-info li {margin-bottom: 10px;}
+.personal-info {list-style: none;margin-bottom: 0;padding: 0;}
+
+.profile-img-wrap {height: 150px;width:150px;}
+
+.profile-basic {width: 100%;}
+.profile-view .profile-basic {margin-left: 170px;}
+
+.page-wrapper {left: 0;margin-left: 220px;padding-top: 60px;position: relative;-webkit-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
+.page-wrapper > .content{padding:30px;}
+
+.card-box {background-color: #fff;border: 1px solid #e7e7e7;border-radius: 4px;margin-bottom: 30px;padding:20px;position: relative;}
+
+.profile-view .profile-img-wrap {height: 150px;width:150px;}
+.profile-view .profile-img {width:150px;height:150px;}
+.profile-view .profile-img .avatar {font-size: 24px;height: 150px;line-height: 150px;margin: 0;width: 150px;}
+.profile-view .profile-basic {margin-left: 170px;}
+
+
+.profile-img {cursor: pointer;height: 80px;margin: 0 auto;position: relative;width: 80px;}
+.profile-img .avatar {font-size: 24px;height: 80px;line-height: 80px;margin: 0;width: 80px;}
+
+@media only screen and (min-width: 768px) {
+    
+    .card-box {padding:15px;}
+    
+}
+
+
+@media only screen and (max-width: 991.98px) {
+    
+    .slide-nav .page-wrapper {left: 225px;margin-left: 0;}
+    .page-wrapper {margin-left: 0;padding-left: 0;padding-right: 0;}
+}
+
+@media only screen and (max-width: 575.98px) {
+    
+    .page-wrapper > .content {padding: 15px;}
+    
+    .profile-view .profile-basic {margin-left: 0;}
+	.profile-img-wrap {position:relative;margin:0 auto;}
+	.profile-view .profile-img-wrap {margin: 0 auto 10px;height: 100px;width: 100px;}
+	.profile-view .profile-img {height: 100px;width: 100px;}
+	.profile-view .profile-img .avatar {font-size: 24px;height: 100px;line-height: 100px;margin: 0;width: 100px;}
+        .profile-basic {margin-left: 0;margin-top: 15px;}
+        
+        
+}*/
+
+/**********************************************************************************/
+
+.card-box{
+        border: 1px solid #e7e7e7;
+    margin-top: 5px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    padding: 20px;
+    /*position: relative;*/
+}
+
+.profile-view .profile-img-wrap {
+    height: 150px;
+    width: 150px;
+}
+
+.profile-img-wrap {
+    height: 120px;
+    position: absolute;
+    width: 120px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.profile-view .profile-basic {
+    margin-left: 170px;
+}
+
+.avatar{
+    
+    font-size: 24px;
+    height: 150px;
+    line-height: 150px;
+    margin: 0;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.profile-info-left {
+    border-right: 2px dashed #ccc;
+    height: 150px;
+}
+
+.personal-info {
+    list-style: none;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.personal-info li {
+    margin-bottom: 10px;
+}
+
+.personal-info li .title {
+    color: #515365;
+    float: left;
+    font-weight: 500;
+    margin-right: 30px;
+    width: 30%;
+}
+
+.personal-info li .text {
+    color: #888da8;
+    display: block;
+    overflow: hidden;
+}
+/*.profile-view{
+    
+    display: flex;
+}*/
+
+.profile-basic{
+    font-family: 'Fira Sans', sans-serif;
+}
+
+@media only screen and (max-width: 991px)
+{
+    /*.user-menu {display:none;}*/
+    .page-wrapper > .content {padding: 15px;}
+    .profile-view .profile-basic {margin-left: 0;}
+    .profile-img-wrap {position:relative;margin:0 auto;}
+    .profile-view .profile-img-wrap {margin: 0 auto 10px;height: 100px;width: 100px;}
+    .profile-view .profile-img {height: 100px;width: 100px;}
+    .profile-view .profile-img .avatar {font-size: 24px;height: 100px;line-height: 100px;margin: 0;width: 100px;}
+    .profile-info-left {text-align:center;border-right: none;border-bottom: 2px dashed #ccc;margin-bottom: 20px;padding-bottom: 50px;height: 90px}
+    .profile-basic {margin-left: 0;margin-top: 15px;}
+    .chat-avatar .avatar {height: 20px;line-height: 20px;width: 20px;}
+    body {font-size:12px;}
+}
+
+/*@media only screen and (max-width: 991px)
+{
+    .profile-info-left 
+    {
+        border-right: none;
+        border-bottom: 2px dashed #ccc;
+        margin-bottom: 20px;
+        padding-bottom: 50px;
+    }
+    
+    .personal-info li .title 
+    {
+        width: 30%;
+    }
+
+}*/
+
+/*@media only screen and (max-width: 575.98px) 
+{
+    .user-menu {display:none;}
+    .page-wrapper > .content {padding: 15px;}
+    .profile-view .profile-basic {margin-left: 0;}
+    .profile-img-wrap {position:relative;margin:0 auto;}
+    .profile-view .profile-img-wrap {margin: 0 auto 10px;height: 100px;width: 100px;}
+    .profile-view .profile-img {height: 100px;width: 100px;}
+    .profile-view .profile-img .avatar {font-size: 24px;height: 100px;line-height: 100px;margin: 0;width: 100px;}
+    .profile-info-left {text-align:center;}
+    .profile-basic {margin-left: 0;margin-top: 15px;}
+    .chat-avatar .avatar {height: 20px;line-height: 20px;width: 20px;}
+    body {font-size:12px;}
+	
+}*/
+/****************************ESTILOS PARA LOS DISEÑOS DE LAS VISTAS**********************************/
+
+.font-ruta{
+   font-size: 12px 
+}
+
+.tbl-darkgreen{
+    background-color: #82AF6F
+}
+
+.header-cian{
+    background-color: #00b5ad
+}
