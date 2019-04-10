@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'Cuestionario.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('DB_NAME', 'cuestionario'),
+        'USER': os.getenv('DB_USER', 'cuestionario'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'cuestionario'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': '5432',
     }
 }
 

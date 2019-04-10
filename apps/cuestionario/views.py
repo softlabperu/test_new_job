@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
-from apps.cuestionario.models import Pregunta,Opcion,Categoria,Participante,Examen,Examen_Pregunta
+from apps.cuestionario.models import Pregunta, Opcion, Categoria, Participante, Examen, Examen_Pregunta
 
-from random import random,sample
+from random import random, sample
 from django.utils.crypto import get_random_string
 from datetime import datetime
 
@@ -10,15 +10,16 @@ from django.http import JsonResponse
 
 # Create your views here.
 
+
 def listar_examen(request):
     context = {}
     pre = Pregunta.objects.all()
-    alt =  Opcion.objects.all()
+    alt = Opcion.objects.all()
 
     body = []
     alternativas = []
     for datos in pre:
-        body.append({'id':datos.id,'pregunta':datos.pregunta})
+        body.append({'id': datos.id, 'pregunta': datos.pregunta})
 
     for data in alt:
         alternativas.append({'id':data.id,'alternativa':data.texto,'idpregunta':data.pregunta_id})
@@ -33,7 +34,6 @@ def registrar(request):
     context = {}
     context['crear_examen'] = 'crear_examen'
     return render(request,'crear_examen.html',context)
-
 
 
 def crear_examen(request):
@@ -66,4 +66,5 @@ def crear_examen(request):
             cuestionario.save()
 
         context['salida'] = 1
+        context['CodeExamen'] = codigo
     return JsonResponse(context, content_type="application/json")
