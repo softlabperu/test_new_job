@@ -10,7 +10,6 @@
                 <div class="panel-heading">
                     <h5 class="panel-title"><small>REGISTRO DE DATOS</small></h5>
                 </div>
-{{ lista }}
 
                 <div class="panel-body">
                     <form method="post" class="form-horizontal" id="frm_crear_examen" data-post-url ='{% url crear_examen %}'>
@@ -38,7 +37,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-2">Nivel: </label>
                             <div class=" col-md-2">
-                                <select name="txtnivel" class="form-control input-sm">
+                                <select id="nivel" name="txtnivel" class="form-control input-sm">
                                     <option value="P">P</option>
                                     <option value="P1">P1</option>
                                     <option value="P2">P2</option>
@@ -97,7 +96,7 @@
                                               ok:
                                                 {
                                                   btnClass: 'btn-blue',
-                                                  action: function () { }
+                                                  action: function () { CleanCampos(); }
                                                 }
                                             }
                                   });
@@ -106,6 +105,16 @@
 
                 }
               });
+    }
+
+
+    function CleanCampos()
+    {
+        $('#documento').val("");
+        $('#Nombres').val("");
+        $('#Apellidos').val("");
+
+        $('#nivel').val('P');
     }
 
 

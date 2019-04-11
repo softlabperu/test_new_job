@@ -1,0 +1,77 @@
+{% extends "header.html" %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+
+        <br>
+
+        <div class="row" >
+            <div>
+                <div style="font-size: 30px" class="text-center">
+                    <label>FORMULARIO</label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <p style="font-size: 25px;" class="panel-title"> Introduce el código del examen </p>
+            </div>
+            <div class="panel-body">
+                <form method="post" class="form-horizontal" id="frm_validar" data-post-url ='{% url formulario %}'>
+                    {% csrf_token %}
+                    <div class="form-group">
+                       <div class="col-md-4"></div>
+                       <div class=" col-md-12 col-lg-4">
+                           <label class="control-label">Codigo: </label>
+                           <input class="form-control input-sm" id="idCodigo" name="txtCodigo" type="text"  />
+                       </div>
+                    </div>
+                    <div class="form-group">
+                        <div class=" col-md-10">
+                            <button type="button" class="btn btn-info" onclick="ValidarIngreso()">Aceptar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+
+
+    function ValidarIngreso()
+    {
+        var post_url = $('#frm_validar').data("post-url");
+        var frm = $('#frm_validar');
+
+        $.ajax({
+                type: 'post',
+                url: post_url,
+                data: frm.serialize(),
+                dataType: 'json',
+                success: function (response)
+                {
+                   console.log(response);
+                   if(response.salida == 2)
+                   {
+
+                   }
+
+                }
+              });
+    }
+
+
+
+
+</script>
+{% endblock %}

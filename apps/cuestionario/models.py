@@ -25,6 +25,11 @@ class Pregunta(models.Model):
         return self.pregunta[:100]
 
 
+    @property
+    def opciones(self):
+        return Opcion.objects.filter(pregunta=self)
+
+
 class Opcion(models.Model):
     texto = models.TextField(null=False, blank=False)
     pregunta = models.ForeignKey(Pregunta, on_delete=models.DO_NOTHING, null=False, blank=False)
@@ -53,7 +58,7 @@ class Examen(models.Model):
         return '{} {}'.format(self.participante, self.codexamen)
 
 
-class Examen_Pregunta(models.Model):
+class ExamenPregunta(models.Model):
     examen = models.ForeignKey(Examen, on_delete=models.DO_NOTHING, null=False, blank=False)
     pregunta = models.ForeignKey(Pregunta, on_delete=models.DO_NOTHING, null=False, blank=False)
     respuesta = models.ForeignKey(Opcion, on_delete=models.DO_NOTHING, null=True, blank=False)
