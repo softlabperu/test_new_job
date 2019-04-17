@@ -23,4 +23,3 @@ urlpatterns = [
     path('', include('apps.cuestionario.urls')),
 ]
 
-print(urlpatterns)

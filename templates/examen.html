@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <div class="container col-xs-12 col-sm-10 col-md-10 col-lg-10" >
+    <div class="container" >
         <br>
         <div class="row" >
             <div>
@@ -15,25 +15,36 @@
                 <form method="post" class="form-horizontal" id="frm_siguiente" data-post-url ='{% url siguiente %}'>
                     {% csrf_token %}
                     <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <input type="hidden" name="txtidexamen" value="{{ pregunta.id }}" />
-                            <p style="font-size: 25px;" class="panel-title">{{ pregunta.pregunta }} ({{ pregunta.pregunta.categoria.nombre }})</p>
-                        </div>
-                        <div class="panel-body">
-                            <ul>
-                                {% for opcion in pregunta.pregunta.opciones %}
-                                    <li style="list-style: none;margin-bottom: 10px;">
-                                        <input type="checkbox" name="respuestas[]" value="{{ opcion.id }}" class="opcion">
-                                        {{ opcion.texto }}
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                            <br>
-                            <div style="padding-left: 40px;" class="form-group">
-                                <button type="button" class="btn btn-info" onclick="SiguientePregunta()">SIGUIENTE</button>
-                            </div>
 
-                        </div>
+                        {% if pregunta %}
+                            <div class="panel-heading">
+                                <input type="hidden" name="txtidexamen" value="{{ pregunta.id }}" />
+                                <p style="font-size: 20px;" class="panel-title">{{ pregunta.pregunta }} ({{ pregunta.pregunta.categoria.nombre }})</p>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                    {% for opcion in pregunta.pregunta.opciones %}
+                                        <li style="list-style: none;margin-bottom: 10px;">
+                                            <input type="checkbox" name="respuestas[]" value="{{ opcion.id }}" class="opcion">
+                                            {{ opcion.texto }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <br>
+                                <div style="padding-left: 40px;" class="form-group">
+                                    <button type="button" class="btn btn-info" onclick="SiguientePregunta()">SIGUIENTE</button>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="panel-heading">
+                                <p style="font-size: 20px;" class="panel-title">mensaje</p>
+                            </div>
+                            <div class="panel-body">
+                                <p style="font-size: 30px;">Su examen acaba de Finalizar. ¡Gracias por Participar!</p>
+                            </div>
+                        {% endif %}
+
+
                     </div>
                 </form>
 
@@ -74,7 +85,7 @@
                     dataType: 'json',
                     success: function (response)
                     {
-                        console.log(response);
+                       // console.log(response);
                        if(response.salida == 2)
                        {
                            $.confirm({

@@ -316,9 +316,9 @@ footer{
 #page-content-wrapper
 {
     /*padding-left: 250px;*/
-    padding-right: 250px;
+    /*padding-right: 250px;*/
     transition: all 0.5s;
-    margin-left: 150px;
+    margin-left: 10px;
     padding-left:0; 
     
 }

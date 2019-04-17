@@ -1,45 +1,37 @@
 {% extends "header.html" %}
 {% load static %}
 
+{% block title %}
+    Acceso
+{% endblock %}
+
 {% block content %}
 
-    <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+{#    <nav style="margin-bottom: 0px;background: black;" class="">#}
+{#        <div style="width: 10%;height: 50px;margin-left: 5%;padding-top: 10px;">#}
+{#          <img id="logo-menu" src="{% static 'img/logo.png' %}" alt="" >#}
+{#      </div>#}
+{#    </nav>#}
 
+    <div class="container " >
         <br>
-
-        <div class="row" >
-            <div>
-                <div style="font-size: 30px" class="text-center">
-                    <label>FORMULARIO</label>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <p style="font-size: 25px;" class="panel-title"> Introduce el código del examen </p>
-            </div>
-            <div class="panel-body">
-                <form method="post" class="form-horizontal" id="frm_validar" data-post-url ='{% url formulario %}'>
-                    {% csrf_token %}
-                    <div class="form-group">
-                       <div class="col-md-4"></div>
-                       <div class=" col-md-12 col-lg-4">
-                           <label class="control-label">Codigo: </label>
-                           <input class="form-control input-sm" id="idCodigo" name="txtCodigo" type="text"  />
-                       </div>
-                    </div>
-                    <div class="form-group">
-                        <div class=" col-md-10">
-                            <button type="button" class="btn btn-info" onclick="ValidarIngreso()">Aceptar</button>
+        <form class="form-horizontal" id="frm_validar" data-post-url ='{% url formulario %}'>
+           {% csrf_token %}
+            <div style="top: 200px;" class="panel panel-primary col-md-6 col-md-offset-3">
+                    <h2 class="text-center">Ingrese Código de Acceso</h2>
+                    <div class="form-group ">
+                        <div class="col-md-12">
+                            <label style="float: left" >Codigo</label>
+                            <input class="form-control input-sm" id="idCodigo" name="txtCodigo" type="text" />
                         </div>
                     </div>
-                </form>
+                    <div class="form-group ">
+                        <div class="col-md-12">
+                            <button style="float: left" type="button" class="btn btn-sm btn-info btn-block" onclick="ValidarIngreso()">Aceptar</button>
+                        </div>
+                    </div>
             </div>
-
-        </div>
-
+        </form>
     </div>
 
 {% endblock %}
@@ -60,9 +52,33 @@
                 dataType: 'json',
                 success: function (response)
                 {
-                   console.log(response);
+
+                   if(response.salida == 0)
+                   {
+                        $.confirm({
+                                    title: 'Ingreso',
+                                    content: 'Debe Seleccionar una opcion',
+                                    theme: 'Modern',
+                                    animation: 'top',
+                                    icon: 'glyphicon glyphicon-remove',
+                                    type: 'red',
+                                    buttons:
+                                            {
+                                              ok:
+                                                {
+                                                  btnClass: 'btn-red',
+                                                  action: function () {  }
+                                                }
+                                            }
+                                  });
+                   }
+                   else
                    if(response.salida == 2)
                    {
+                       console.log(response.acceso);
+                       var ruta = "{% url 'listar_examen' 123  %}";
+                       document.location.href = ruta.replace('123',response.acceso);
+
 
                    }
 
