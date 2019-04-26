@@ -88,6 +88,7 @@ class ExamenPregunta(models.Model):
 class Puntaje(models.Model):
     nivel = models.ForeignKey(Nivel, on_delete=models.DO_NOTHING, null=False, blank=False)
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING, null=False, blank=False)
-    puntaje = models.IntegerField(null=False, blank=False)
+    puntaje = models.IntegerField(null=True, blank=False)
 
-
+    def __str__(self):
+        return format(self.id)
