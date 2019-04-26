@@ -5,12 +5,9 @@ from apps.cuestionario.models import Categoria, Nivel, Pregunta, Opcion, Partici
 
 admin.site.register(Categoria)
 admin.site.register(Nivel)
-
 admin.site.register(Pregunta)
 admin.site.register(Opcion)
-
 admin.site.register(Participante)
 admin.site.register(Examen)
-
 admin.site.register(ExamenPregunta)
 admin.site.register(Puntaje)
