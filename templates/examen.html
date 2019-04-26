@@ -1,42 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Examen</title>
-</head>
-<body>
+{% extends "header.html" %}
+{% load static %}
 
-<ul>
+{% block content %}
 
-    {% for p in preguntas %}
-        <li style="list-style: none;">{{ p.id }} ) {{ p.pregunta }}</li>
-        <ul>
-        {% for a in alternativas %}
-            {% if a.idpregunta == p.id %}
-                <li style="list-style: none;">
-                    <input type="checkbox" name="respuestas[]"  value="{{ a.id }}" class="opcion{{ p.id }}">
-                    {{ a.alternativa }}
-                </li>
-            {% endif %}
-        {% endfor %}
-        </ul>
-    {% endfor %}
+    <div class="container" >
+        <br>
+        <div class="row" >
+            <div>
+                <div style="font-size: 30px" class="text-center">
+                    <label>EXAMEN INTRODUCTORIO SOFTLABPERU</label>
+                </div>
 
-</ul>
 
-</body>
-</html>
+                <form method="post" class="form-horizontal" id="frm_siguiente" data-post-url ='{% url siguiente %}'>
+                    {% csrf_token %}
+                    <div class="panel panel-primary">
 
-<script>
+                        {% if pregunta %}
+                            <div class="panel-heading">
+                                <input type="hidden" name="txtidexamen" value="{{ pregunta.id }}" />
+                                <p style="font-size: 20px;" class="panel-title">{{ pregunta.pregunta }} ({{ pregunta.pregunta.categoria.nombre }})</p>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                    {% for opcion in pregunta.pregunta.opciones %}
+                                        <li style="list-style: none;margin-bottom: 10px;">
+                                            <input type="checkbox" name="respuestas[]" value="{{ opcion.id }}" class="opcion">
+                                            {{ opcion.texto }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <br>
+                                <div style="padding-left: 40px;" class="form-group">
+                                    <button type="button" class="btn btn-info" onclick="SiguientePregunta()">SIGUIENTE</button>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="panel-heading">
+                                <p style="font-size: 20px;" class="panel-title">mensaje</p>
+                            </div>
+                            <div class="panel-body">
+                                <p style="font-size: 30px;">Su examen acaba de Finalizar. ¡Gracias por Participar!</p>
+                            </div>
+                        {% endif %}
 
-    var datos = {{ alternativas|safe }};
 
-    for (i = 0; i < datos.length; i++)
-    {
-        var option = 'opcion' + datos[i]['idpregunta'];
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script type="text/javascript">
+
         let Checked = null;
         //The class name can vary
-        for (let CheckBox of document.getElementsByClassName(option))
+        for (let CheckBox of document.getElementsByClassName('opcion'))
         {
             CheckBox.onclick = function(){
             if(Checked!=null){
@@ -46,7 +72,49 @@
             Checked = CheckBox;
           }
         }
-    }
 
+        function SiguientePregunta()
+        {
+            var post_url = $('#frm_siguiente').data("post-url");
+            var frm = $('#frm_siguiente');
+
+            $.ajax({
+                    type: 'post',
+                    url: post_url,
+                    data: frm.serialize(),
+                    dataType: 'json',
+                    success: function (response)
+                    {
+                       // console.log(response);
+                       if(response.salida == 2)
+                       {
+                           $.confirm({
+                                    title: 'Respuesta',
+                                    content: 'Debe Seleccionar una opcion',
+                                    theme: 'Modern',
+                                    animation: 'top',
+                                    icon: 'glyphicon glyphicon-option-vertical',
+                                    type: 'red',
+                                    buttons:
+                                            {
+                                              ok:
+                                                {
+                                                  btnClass: 'btn-red',
+                                                  action: function () {  }
+                                                }
+                                            }
+                                  });
+                       }
+                       else
+                       if(response.salida == 1)
+                       {
+                               location.href = "{{ ruta_carga }}";
+                       }
+
+                    }
+                  });
+        }
 
 </script>
+
+{% endblock %}

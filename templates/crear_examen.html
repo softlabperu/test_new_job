@@ -10,7 +10,6 @@
                 <div class="panel-heading">
                     <h5 class="panel-title"><small>REGISTRO DE DATOS</small></h5>
                 </div>
-{{ lista }}
 
                 <div class="panel-body">
                     <form method="post" class="form-horizontal" id="frm_crear_examen" data-post-url ='{% url crear_examen %}'>
@@ -38,11 +37,10 @@
                         <div class="form-group">
                             <label class="control-label col-md-2">Nivel: </label>
                             <div class=" col-md-2">
-                                <select name="txtnivel" class="form-control input-sm">
-                                    <option value="P">P</option>
-                                    <option value="P1">P1</option>
-                                    <option value="P2">P2</option>
-                                    <option value="P3">P3</option>
+                                <select id="nivel" name="txtnivel" class="form-control input-sm">
+                                    {% for nivel in niveles %}
+                                        <option value="{{ nivel.id }}">{{ nivel.nombre }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -87,7 +85,7 @@
                     {
                         $.confirm({
                                     title: 'Registro de Informacion',
-                                    content: 'El Examen fue creado Satisfactoriamente',
+                                    content: 'El Examen fue creado Satisfactoriamente. Su codigo de acceso es :' + response.CodeExamen,
                                     theme: 'Modern',
                                     animation: 'top',
                                     icon: 'glyphicon glyphicon-ok',
@@ -97,7 +95,7 @@
                                               ok:
                                                 {
                                                   btnClass: 'btn-blue',
-                                                  action: function () { }
+                                                  action: function () { CleanCampos(); }
                                                 }
                                             }
                                   });
@@ -106,6 +104,16 @@
 
                 }
               });
+    }
+
+
+    function CleanCampos()
+    {
+        $('#documento').val("");
+        $('#Nombres').val("");
+        $('#Apellidos').val("");
+
+        $('#nivel').val('1');
     }
 
 
